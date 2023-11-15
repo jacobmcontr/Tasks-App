@@ -1,0 +1,5 @@
+userid,username,task,quantity,userdate
+1,"Fred Flinstone","run",1,"4/1/2022"
+2,"Wilma Flinstone","eat",2,"4/2/2022"
+3,"Barney Rubble","throw",1,"4/3/2022"
+4,"Betty Rubble","work",5,"4/4/2022"

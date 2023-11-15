@@ -1,0 +1,20 @@
+<html>
+<head>
+<script language="javascript">
+window.addEventListener("load", readAll)
+function readAll() {
+fetch("http://localhost:7777/retrieve")
+.then(response => response.json())
+.then(function(data) {
+data.forEach(row => deleteList.innerHTML += `<a href=delete-one.html?
+id=${row.id}>${row.id}</a>,${row.name},${row.quantity},$
+{row.task}<br>`)
+})
+}
+</script>
+</head>
+<body>
+<h1>Minimal CRUD Delete User Interface</h1>
+<div id="deleteList"></div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+<head>
+<script language="javascript">
+window.addEventListener("load", readAll)
+function readAll() {
+fetch("http://localhost:7777/retrieve")
+.then(response => response.json())
+.then(function(data) {
+data.forEach(row => records.innerHTML +=
+`${row.userid},${row.username},${row.task},${row.quantity}<br>`)
+})
+}
+</script>
+</head>
+<body>
+<h1>Retrieve Tasks</h1>
+<div id="records"></div>
+</body>
+</html>

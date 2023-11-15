@@ -1,0 +1,35 @@
+<html>
+<head>
+<script>
+window.addEventListener("load", main)
+function main() {
+btn.addEventListener("click", sendData)
+}
+function sendData() {
+data = {
+guestid : guestid.value,
+guestname : guestname.value,
+guestage : guestage.value,
+guestcomment : guestcomment.value
+}
+url = "http://localhost:7777/create"
+fetch(url, {
+method: 'POST',
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify(data)
+})
+location.href="retrieve.html"
+}
+</script>
+</head>
+<body>
+<h1>Minimal CRUD Create User Interface</h1>
+Id: <input id = "guestid"><br>
+Name: <input id = "guestname"><br>
+Age: <input id = "guestage"><br>
+Comment: <input id = "guestcomment"><br>
+<input type="button" id="btn" value="CREATE"><br>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+<head>
+<script language="javascript">
+window.addEventListener("load", main)
+function main() {
+readOne()
+btn.addEventListener("click", writeOne)
+}
+function readOne() {
+params = (new URL(document.location)).searchParams
+id = params.get("userid")
+fetch("http://localhost:7777/retrieve-one/"+id)
+.then(response => response.json())
+.then(function(data) {
+userid.value = data.userid
+username.value = data.username
+task.value = data.task
+quantity.value = data.quantity
+})
+}
+function writeOne() {
+data = {
+userid : userid.value,
+username : username.value,
+task : task.value,
+quantity : quantity.value,
+}
+fetch("http://localhost:7777/update", {
+method : 'PUT',
+headers : { "Content-Type": "application/json"},
+body : JSON.stringify(data)
+})
+location.href="retrieve.html"
+}
+</script>
+</head>
+<body>
+<h1>Update Tasks</h1>
+<input id="userid" style="visibility:hidden"><br>
+Name: <input id="username"><br>
+Task: <input id="task"><br>
+Quantity: <input id="quantity"><br>
+<input type="button" id="btn" value="Update">
+</body>
+</html>

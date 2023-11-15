@@ -1,0 +1,15 @@
+<html>
+<head>
+<script language="javascript">
+window.addEventListener("load", deleteOne)
+function deleteOne() {
+params = (new URL(document.location)).searchParams
+id = params.get("id")
+fetch("http://localhost:7777/delete/"+id, {method:"DELETE"})
+location.href="retrieve.html"
+}
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+<head>
+<script language="javascript">
+window.addEventListener("load", main)
+function main() {
+readOne()
+btn.addEventListener("click", writeOne)
+}
+function readOne() {
+params = (new URL(document.location)).searchParams
+id = params.get("id")
+fetch("http://localhost:7777/retrieve-one/"+id)
+.then(response => response.json())
+.then(function(data) {
+id.value = data.id
+name.value = data.name
+quantity.value = data.quantity
+task.value = data.task
+})
+}
+function writeOne() {
+data = {
+id : id.value,
+name : name.value,
+quantity : quantity.value,
+task : task.value
+}
+fetch("http://localhost:7777/update", {
+method : 'PUT',
+headers : { "Content-Type": "application/json"},
+body : JSON.stringify(data)
+})
+location.href="retrieve.html"
+}
+</script>
+</head>
+<body>
+<h1>Minimal CRUD Update One Record</h1>
+<input id="id" style="visibility:hidden"><br>
+name: <input id="name"><br>
+quantity: <input id="quantity"><br>
+task: <input id="task"><br>
+<input type="button" id="btn" value="Update">
+</body>
+</html>

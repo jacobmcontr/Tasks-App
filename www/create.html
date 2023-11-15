@@ -1,0 +1,35 @@
+<html>
+<head>
+<script>
+window.addEventListener("load", main)
+function main() {
+btn.addEventListener("click", sendData)
+}
+function sendData() {
+data = {
+userid : userid.value,
+username : username.value,
+task : task.value,
+quantity : quantity.value
+}
+url = "http://localhost:7777/create"
+fetch(url, {
+method: 'POST',
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify(data)
+})
+location.href="retrieve.html"
+}
+</script>
+</head>
+<body>
+<h1>Create Tasks</h1>
+Id: <input id = "userid"><br>
+Name: <input id = "username"><br>
+Task: <input id = "task"><br>
+Quantity: <input id = "quantity"><br>
+<input type="button" id="btn" value="CREATE"><br>
+</body>
+</html>

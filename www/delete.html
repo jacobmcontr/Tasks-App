@@ -1,0 +1,18 @@
+<html>
+<head>
+<script language="javascript">
+window.addEventListener("load", readAll)
+function readAll() {
+fetch("http://localhost:7777/retrieve")
+.then(response => response.json())
+.then(function(data) {
+data.forEach(row => deleteList.innerHTML += `<a href=delete-one.html?userid=${row.userid}>${row.userid}</a>,${row.username},${row.quantity},${row.task}<br>`)
+})
+}
+</script>
+</head>
+<body>
+<h1>Delete Tasks</h1>
+<div id="deleteList"></div>
+</body>
+</html>
